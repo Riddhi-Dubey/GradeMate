@@ -1,0 +1,18 @@
+{
+  "name": "grademate",
+  "version": "1.0.0",
+  "description": "GradeMate – CGPA & Percentage Calculator",
+  "main": "index.js",
+  "scripts": {
+    "start": "node local-server.js",
+    "test": "node test-calcs.js"
+  },
+  "keywords": [
+    "grademate",
+    "cgpa-calculator",
+    "sgpa-calculator",
+    "percentage-calculator"
+  ],
+  "author": "Riddhi Dubey",
+  "license": "MIT"
+}
