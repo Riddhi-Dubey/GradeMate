@@ -58,7 +58,7 @@ Built with **HTML5, Vanilla CSS3, and Modular JavaScript**. 100% frontend, priva
 ```
 Bootcamp/
 ├── index.html              # Main application page with semantic HTML5
-├── server.js               # Lightweight local Node.js static server
+├── local-server.js        # Lightweight local Node.js static server
 ├── test-calcs.js           # Automated test suite for calculations & validations
 ├── css/
 │   ├── style.css           # Core design system, variables, typography & layout
@@ -81,7 +81,7 @@ Simply double-click or open [index.html](file:///c:/Users/Riddhi%20Dubey/Desktop
 ### Option 2: Using the Local Dev Server
 Run the built-in server with Node.js:
 ```bash
-node server.js
+node local-server.js
 ```
 Then open:
 ```
