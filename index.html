@@ -1,0 +1,911 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GradeMate – CGPA &amp; Percentage Calculator | Simple, Fast &amp; Accurate</title>
+  <meta name="description" content="Calculate your marks percentage, SGPA, and CGPA in seconds with GradeMate. A modern, responsive, and easy-to-use academic utility tool for students." />
+  <meta name="keywords" content="GradeMate, CGPA calculator, SGPA calculator, Percentage calculator, CGPA to percentage, academic score calculator, student utility" />
+
+  <!-- Google Fonts: Plus Jakarta Sans & JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/animations.css" />
+</head>
+<body>
+
+  <!-- Ambient Background Effect -->
+  <div class="bg-ambient-pattern" aria-hidden="true"></div>
+
+  <!-- Site Navigation -->
+  <header class="site-header">
+    <div class="container nav-container">
+      <!-- Brand Logo -->
+      <a href="#hero" class="brand-link" id="brand-logo" aria-label="GradeMate Home">
+        <div class="brand-icon-wrapper">
+          <svg fill="currentColor" viewBox="0 0 24 24">
+            <path d="M12 3L1 9L12 15L21 10.09V17H23V9M5 13.18V17.18L12 21L19 17.18V13.18L12 17L5 13.18Z" />
+          </svg>
+        </div>
+        <div class="brand-text">
+          <span class="brand-title">Grade<span>Mate</span></span>
+          <span class="brand-subtitle">Simple. Fast. Accurate.</span>
+        </div>
+      </a>
+
+      <!-- Desktop Nav -->
+      <nav class="desktop-nav" aria-label="Main Navigation">
+        <a href="#percentage-section" class="nav-item" id="nav-percentage">
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 14l6-6m-5.5.5a2.5 2.5 0 11-5 0 2.5 2.5 0 015 0zm11 5a2.5 2.5 0 11-5 0 2.5 2.5 0 015 0z" />
+          </svg>
+          Percentage
+        </a>
+        <a href="#sgpa-section" class="nav-item" id="nav-sgpa">
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+          </svg>
+          SGPA
+        </a>
+        <a href="#cgpa-section" class="nav-item" id="nav-cgpa">
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
+          </svg>
+          CGPA
+        </a>
+        <a href="#converter-section" class="nav-item" id="nav-converter">
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4" />
+          </svg>
+          CGPA → %
+        </a>
+        <a href="#percentage-section" class="nav-action-btn" id="nav-action-calculate">
+          Calculate Now
+        </a>
+      </nav>
+
+      <!-- Mobile Menu Button -->
+      <button type="button" class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Toggle navigation menu" aria-expanded="false">
+        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </button>
+    </div>
+
+    <!-- Mobile Nav Drawer -->
+    <div class="mobile-nav-drawer" id="mobile-nav-drawer">
+      <a href="#percentage-section" class="mobile-nav-item">
+        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" style="width: 1.2rem; height: 1.2rem;">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 14l6-6m-5.5.5a2.5 2.5 0 11-5 0 2.5 2.5 0 015 0zm11 5a2.5 2.5 0 11-5 0 2.5 2.5 0 015 0z" />
+        </svg>
+        Percentage Calculator
+      </a>
+      <a href="#sgpa-section" class="mobile-nav-item">
+        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" style="width: 1.2rem; height: 1.2rem;">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+        </svg>
+        SGPA Calculator
+      </a>
+      <a href="#cgpa-section" class="mobile-nav-item">
+        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" style="width: 1.2rem; height: 1.2rem;">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
+        </svg>
+        CGPA Calculator
+      </a>
+      <a href="#converter-section" class="mobile-nav-item">
+        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" style="width: 1.2rem; height: 1.2rem;">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4" />
+        </svg>
+        CGPA → Percentage Converter
+      </a>
+    </div>
+  </header>
+
+  <!-- Main Content Wrapper -->
+  <main>
+    <!-- Hero Section -->
+    <section class="hero-section" id="hero">
+      <div class="container">
+        <!-- Eyebrow Pill -->
+        <div class="hero-pill-badge">
+          <svg fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z" clip-rule="evenodd" />
+          </svg>
+          GradeMate • Simple. Fast. Accurate.
+        </div>
+
+        <!-- Main Heading -->
+        <h1 class="hero-title">
+          Calculate your academic scores <br /><span class="gradient-text">in seconds.</span>
+        </h1>
+
+        <!-- Short Description from prompt -->
+        <p class="hero-description">
+          A simple calculator for percentage, SGPA and CGPA — designed for students.
+        </p>
+
+        <!-- Quick Calculator Cards (3 Large Cards) -->
+        <div class="quick-cards-grid">
+          <!-- Card 1: Percentage -->
+          <a href="#percentage-section" class="quick-card" id="quick-card-percentage">
+            <div>
+              <div class="quick-card-icon-box blue">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 14l6-6m-5.5.5a2.5 2.5 0 11-5 0 2.5 2.5 0 015 0zm11 5a2.5 2.5 0 11-5 0 2.5 2.5 0 015 0z" />
+                </svg>
+              </div>
+              <h2 class="quick-card-title">Percentage</h2>
+              <p class="quick-card-desc">Calculate your marks percentage.</p>
+            </div>
+            <div class="quick-card-action">
+              <span>Calculate</span>
+              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+              </svg>
+            </div>
+          </a>
+
+          <!-- Card 2: SGPA -->
+          <a href="#sgpa-section" class="quick-card" id="quick-card-sgpa">
+            <div>
+              <div class="quick-card-icon-box purple">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+                </svg>
+              </div>
+              <h2 class="quick-card-title">SGPA</h2>
+              <p class="quick-card-desc">Calculate semester grade point average.</p>
+            </div>
+            <div class="quick-card-action">
+              <span>Calculate</span>
+              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+              </svg>
+            </div>
+          </a>
+
+          <!-- Card 3: CGPA -->
+          <a href="#cgpa-section" class="quick-card" id="quick-card-cgpa">
+            <div>
+              <div class="quick-card-icon-box indigo">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
+                </svg>
+              </div>
+              <h2 class="quick-card-title">CGPA</h2>
+              <p class="quick-card-desc">Calculate your overall academic performance.</p>
+            </div>
+            <div class="quick-card-action">
+              <span>Calculate</span>
+              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+              </svg>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section class="how-it-works-section" id="how-it-works">
+      <div class="container">
+        <div class="section-header-compact">
+          <span class="section-pill">Workflow</span>
+          <h2>How it works</h2>
+          <p>Enter your marks → Calculate → Get your result</p>
+        </div>
+
+        <div class="steps-grid">
+          <!-- Step 1 -->
+          <div class="step-card">
+            <span class="step-number">01</span>
+            <div class="step-icon">
+              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+              </svg>
+            </div>
+            <h3 class="step-title">Enter your marks</h3>
+            <p class="step-desc">Input your marks, subject credits, or semester SGPAs into the clean form fields.</p>
+          </div>
+
+          <!-- Step 2 -->
+          <div class="step-card">
+            <span class="step-number">02</span>
+            <div class="step-icon">
+              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
+              </svg>
+            </div>
+            <h3 class="step-title">Calculate</h3>
+            <p class="step-desc">Instant mathematical processing in your browser with strict input validations.</p>
+          </div>
+
+          <!-- Step 3 -->
+          <div class="step-card">
+            <span class="step-number">03</span>
+            <div class="step-icon">
+              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+            </div>
+            <h3 class="step-title">Get your result</h3>
+            <p class="step-desc">Review your score gauge, total counts, academic standing, and copy or reset easily.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 1: Percentage Calculator -->
+    <section class="calc-section container" id="percentage-section">
+      <div class="calc-container">
+        <!-- Header -->
+        <div class="calc-header">
+          <div class="calc-header-info">
+            <div class="calc-icon-badge blue">
+              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 14l6-6m-5.5.5a2.5 2.5 0 11-5 0 2.5 2.5 0 015 0zm11 5a2.5 2.5 0 11-5 0 2.5 2.5 0 015 0z" />
+              </svg>
+            </div>
+            <div>
+              <h2 class="calc-title">Percentage Calculator</h2>
+              <p class="calc-subtitle">Calculate your overall marks percentage with simple totals or subject-wise mode.</p>
+            </div>
+          </div>
+
+          <!-- Mode Switcher -->
+          <div class="mode-toggle-group" role="tablist" aria-label="Percentage Calculator Mode">
+            <button type="button" class="mode-toggle-btn active" id="mode-simple-btn" role="tab" aria-selected="true">
+              Simple Mode
+            </button>
+            <button type="button" class="mode-toggle-btn" id="mode-subject-btn" role="tab" aria-selected="false">
+              Subject-wise Mode
+            </button>
+          </div>
+        </div>
+
+        <!-- Body Grid -->
+        <div class="calc-body-grid">
+          <!-- Inputs Column -->
+          <div class="calc-inputs-pane">
+            <!-- Simple Mode Container -->
+            <div id="simple-mode-container">
+              <!-- Validation Alert -->
+              <div class="validation-alert" id="simple-alert" role="alert">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+                </svg>
+                <span id="simple-alert-msg">Please enter marks between 0 and the maximum marks.</span>
+              </div>
+
+              <!-- Marks Obtained -->
+              <div class="form-group">
+                <label for="simple-obtained" class="form-label">
+                  Marks Obtained <span class="form-label-hint">(Score achieved)</span>
+                </label>
+                <div class="input-with-icon">
+                  <span class="input-icon-prefix">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                  </span>
+                  <input type="number" id="simple-obtained" class="form-input" placeholder="e.g. 392" value="392" min="0" step="any" />
+                </div>
+              </div>
+
+              <!-- Total Marks -->
+              <div class="form-group">
+                <label for="simple-total" class="form-label">
+                  Total Marks <span class="form-label-hint">(Maximum possible marks)</span>
+                </label>
+                <div class="input-with-icon">
+                  <span class="input-icon-prefix">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
+                    </svg>
+                  </span>
+                  <input type="number" id="simple-total" class="form-input" placeholder="e.g. 500" value="500" min="1" step="any" />
+                </div>
+              </div>
+
+              <!-- Action Buttons -->
+              <div class="calc-actions-bar">
+                <div class="btn-group-left">
+                  <button type="button" class="btn-primary" id="simple-calc-btn">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
+                    </svg>
+                    Calculate Percentage
+                  </button>
+                </div>
+                <div class="btn-group-right">
+                  <button type="button" class="btn-secondary" id="simple-reset-btn">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+                    </svg>
+                    Reset
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Subject-wise Mode Container (Hidden by default) -->
+            <div id="subject-mode-container" style="display: none;">
+              <!-- Validation Alert -->
+              <div class="validation-alert" id="subject-alert" role="alert">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+                </svg>
+                <span id="subject-alert-msg">Please enter marks between 0 and the maximum marks.</span>
+              </div>
+
+              <!-- Table -->
+              <div class="table-responsive-wrapper">
+                <table class="dynamic-table" id="subjects-table">
+                  <thead>
+                    <tr>
+                      <th style="width: 44%;">Subject</th>
+                      <th style="width: 26%;">Marks Obtained</th>
+                      <th style="width: 22%;">Maximum Marks</th>
+                      <th style="width: 8%; text-align: center;"></th>
+                    </tr>
+                  </thead>
+                  <tbody id="subjects-table-body">
+                    <!-- Populated dynamically via JS -->
+                  </tbody>
+                </table>
+              </div>
+
+              <!-- Add Row & Buttons -->
+              <div style="margin-bottom: 1rem;">
+                <button type="button" class="btn-add" id="add-subject-btn">
+                  <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+                  </svg>
+                  + Add Subject
+                </button>
+              </div>
+
+              <div class="calc-actions-bar">
+                <div class="btn-group-left">
+                  <button type="button" class="btn-primary" id="subject-calc-btn">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
+                    </svg>
+                    Calculate Percentage
+                  </button>
+                </div>
+                <div class="btn-group-right">
+                  <button type="button" class="btn-secondary" id="subject-reset-btn">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+                    </svg>
+                    Reset
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Result Column -->
+          <div class="calc-results-pane">
+            <div class="result-card-inner">
+              <span class="result-eyebrow">YOUR RESULT</span>
+
+              <!-- SVG Circular Progress Indicator -->
+              <div class="gauge-container">
+                <svg class="gauge-svg" viewBox="0 0 160 160">
+                  <circle class="gauge-bg-circle" cx="80" cy="80" r="70" />
+                  <circle class="gauge-progress-circle" id="pct-gauge-circle" cx="80" cy="80" r="70" stroke-dasharray="439.82" stroke-dashoffset="94.5" />
+                </svg>
+                <div class="gauge-content">
+                  <span class="gauge-value" id="pct-result-value">78.50%</span>
+                  <span class="gauge-label">Your Percentage</span>
+                </div>
+              </div>
+
+              <!-- Supporting Information -->
+              <div class="result-stats-list">
+                <div class="result-stat-row">
+                  <span class="result-stat-label">Marks Obtained:</span>
+                  <span class="result-stat-value" id="pct-obtained-value">392 / 500</span>
+                </div>
+                <div class="result-stat-row">
+                  <span class="result-stat-label">Marks Deducted:</span>
+                  <span class="result-stat-value" id="pct-lost-value">108</span>
+                </div>
+                <div class="result-stat-row">
+                  <span class="result-stat-label">Standing:</span>
+                  <span class="standing-badge" id="pct-standing-badge">Distinction</span>
+                </div>
+              </div>
+
+              <!-- Copy Result Button -->
+              <button type="button" class="btn-copy-result" id="pct-copy-btn">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3" />
+                </svg>
+                Copy Result Summary
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 2: SGPA Calculator -->
+    <section class="calc-section container" id="sgpa-section">
+      <div class="calc-container">
+        <!-- Header -->
+        <div class="calc-header">
+          <div class="calc-header-info">
+            <div class="calc-icon-badge purple">
+              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+              </svg>
+            </div>
+            <div>
+              <h2 class="calc-title">SGPA Calculator</h2>
+              <p class="calc-subtitle">Semester Grade Point Average from course credits and grade points (0 to 10 scale).</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Formula Strip -->
+        <div class="formula-strip">
+          <span class="formula-label">
+            <svg fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd" />
+            </svg>
+            Calculation Formula:
+          </span>
+          <span class="formula-code">SGPA = Σ(Credit × Grade Point) / Σ(Credits)</span>
+        </div>
+
+        <!-- Body Grid -->
+        <div class="calc-body-grid">
+          <!-- Inputs Column -->
+          <div class="calc-inputs-pane">
+            <!-- Validation Alert -->
+            <div class="validation-alert" id="sgpa-alert" role="alert">
+              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+              </svg>
+              <span id="sgpa-alert-msg">Please enter positive credits and grade points between 0 and 10.</span>
+            </div>
+
+            <!-- SGPA Subjects Table -->
+            <div class="table-responsive-wrapper">
+              <table class="dynamic-table" id="sgpa-table">
+                <thead>
+                  <tr>
+                    <th style="width: 44%;">Subject</th>
+                    <th style="width: 26%;">Credits</th>
+                    <th style="width: 22%;">Grade Point (0-10)</th>
+                    <th style="width: 8%; text-align: center;"></th>
+                  </tr>
+                </thead>
+                <tbody id="sgpa-table-body">
+                  <!-- Populated via JS -->
+                </tbody>
+              </table>
+            </div>
+
+            <!-- Add Row Button -->
+            <div style="margin-bottom: 1rem;">
+              <button type="button" class="btn-add" id="add-sgpa-row-btn">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+                </svg>
+                + Add Subject
+              </button>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="calc-actions-bar">
+              <div class="btn-group-left">
+                <button type="button" class="btn-primary" id="sgpa-calc-btn">
+                  <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
+                  </svg>
+                  Calculate SGPA
+                </button>
+              </div>
+              <div class="btn-group-right">
+                <button type="button" class="btn-secondary" id="sgpa-reset-btn">
+                  <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+                  </svg>
+                  Reset
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Result Column -->
+          <div class="calc-results-pane">
+            <div class="result-card-inner">
+              <span class="result-eyebrow">YOUR RESULT</span>
+
+              <!-- Radial Gauge -->
+              <div class="gauge-container">
+                <svg class="gauge-svg" viewBox="0 0 160 160">
+                  <circle class="gauge-bg-circle" cx="80" cy="80" r="70" />
+                  <circle class="gauge-progress-circle" id="sgpa-gauge-circle" cx="80" cy="80" r="70" stroke-dasharray="439.82" stroke-dashoffset="68.8" />
+                </svg>
+                <div class="gauge-content">
+                  <span class="gauge-value" id="sgpa-result-value">8.43</span>
+                  <span class="gauge-label">Your SGPA</span>
+                </div>
+              </div>
+
+              <!-- Supporting Breakdown -->
+              <div class="result-stats-list">
+                <div class="result-stat-row">
+                  <span class="result-stat-label">Total Credits:</span>
+                  <span class="result-stat-value" id="sgpa-total-credits">11</span>
+                </div>
+                <div class="result-stat-row">
+                  <span class="result-stat-label">Total Credit Points:</span>
+                  <span class="result-stat-value" id="sgpa-total-points">92.00</span>
+                </div>
+                <div class="result-stat-row">
+                  <span class="result-stat-label">Performance Grade:</span>
+                  <span class="standing-badge" id="sgpa-standing-badge">Excellent (A+)</span>
+                </div>
+              </div>
+
+              <!-- Copy Result Button -->
+              <button type="button" class="btn-copy-result" id="sgpa-copy-btn">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3" />
+                </svg>
+                Copy SGPA Summary
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 3: CGPA Calculator -->
+    <section class="calc-section container" id="cgpa-section">
+      <div class="calc-container">
+        <!-- Header -->
+        <div class="calc-header">
+          <div class="calc-header-info">
+            <div class="calc-icon-badge indigo">
+              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
+              </svg>
+            </div>
+            <div>
+              <h2 class="calc-title">CGPA Calculator</h2>
+              <p class="calc-subtitle">Calculate cumulative grade point average across all completed semesters.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Formula Strip -->
+        <div class="formula-strip">
+          <span class="formula-label">
+            <svg fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd" />
+            </svg>
+            Calculation Formula:
+          </span>
+          <span class="formula-code">CGPA = Average of entered semester SGPAs</span>
+        </div>
+
+        <!-- Body Grid -->
+        <div class="calc-body-grid">
+          <!-- Inputs Column -->
+          <div class="calc-inputs-pane">
+            <!-- Validation Alert -->
+            <div class="validation-alert" id="cgpa-alert" role="alert">
+              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+              </svg>
+              <span id="cgpa-alert-msg">Please enter valid SGPA values between 0 and 10.</span>
+            </div>
+
+            <!-- Semesters Table -->
+            <div class="table-responsive-wrapper">
+              <table class="dynamic-table" id="cgpa-table">
+                <thead>
+                  <tr>
+                    <th style="width: 55%;">Semester</th>
+                    <th style="width: 35%;">SGPA (0 - 10)</th>
+                    <th style="width: 10%; text-align: center;"></th>
+                  </tr>
+                </thead>
+                <tbody id="cgpa-table-body">
+                  <!-- Populated via JS -->
+                </tbody>
+              </table>
+            </div>
+
+            <!-- Add Row Button -->
+            <div style="margin-bottom: 1rem;">
+              <button type="button" class="btn-add" id="add-semester-btn">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+                </svg>
+                + Add Semester
+              </button>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="calc-actions-bar">
+              <div class="btn-group-left">
+                <button type="button" class="btn-primary" id="cgpa-calc-btn">
+                  <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
+                  </svg>
+                  Calculate CGPA
+                </button>
+              </div>
+              <div class="btn-group-right">
+                <button type="button" class="btn-secondary" id="cgpa-reset-btn">
+                  <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+                  </svg>
+                  Reset
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Result Column -->
+          <div class="calc-results-pane">
+            <div class="result-card-inner">
+              <span class="result-eyebrow">YOUR RESULT</span>
+
+              <!-- Circular Progress Gauge -->
+              <div class="gauge-container">
+                <svg class="gauge-svg" viewBox="0 0 160 160">
+                  <circle class="gauge-bg-circle" cx="80" cy="80" r="70" />
+                  <circle class="gauge-progress-circle" id="cgpa-gauge-circle" cx="80" cy="80" r="70" stroke-dasharray="439.82" stroke-dashoffset="67.3" />
+                </svg>
+                <div class="gauge-content">
+                  <span class="gauge-value" id="cgpa-result-value">8.47</span>
+                  <span class="gauge-label">Your CGPA</span>
+                </div>
+              </div>
+
+              <!-- Supporting Stats -->
+              <div class="result-stats-list">
+                <div class="result-stat-row">
+                  <span class="result-stat-label">Semesters Included:</span>
+                  <span class="result-stat-value" id="cgpa-semester-count">3 Semesters</span>
+                </div>
+                <div class="result-stat-row">
+                  <span class="result-stat-label">Average SGPA:</span>
+                  <span class="result-stat-value" id="cgpa-average-sgpa">8.47</span>
+                </div>
+                <div class="result-stat-row">
+                  <span class="result-stat-label">Academic Standing:</span>
+                  <span class="standing-badge" id="cgpa-standing-badge">First Class with Distinction</span>
+                </div>
+              </div>
+
+              <!-- Send to Converter Shortcut -->
+              <button type="button" class="btn-copy-result" id="cgpa-send-to-converter-btn" style="color: var(--primary); font-weight: 700;">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+                </svg>
+                Convert to Percentage ↓
+              </button>
+
+              <!-- Copy Result Button -->
+              <button type="button" class="btn-copy-result" id="cgpa-copy-btn">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3" />
+                </svg>
+                Copy CGPA Summary
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SECTION 4: CGPA to Percentage Converter (Placed below CGPA Calculator as requested) -->
+      <div class="converter-container" id="converter-section">
+        <!-- Header -->
+        <div style="display: flex; align-items: center; gap: 0.85rem; margin-bottom: 1.5rem;">
+          <div class="calc-icon-badge teal" style="width: 2.6rem; height: 2.6rem;">
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4" />
+            </svg>
+          </div>
+          <div>
+            <h3 style="font-size: 1.25rem; font-weight: 800; color: var(--text-title); letter-spacing: -0.02em;">
+              CGPA → Percentage Converter
+            </h3>
+            <p style="font-size: 0.85rem; color: var(--text-muted);">
+              Convert cumulative GPA to percentage using AICTE/CBSE standard formula (× 9.5) or a custom institutional multiplier.
+            </p>
+          </div>
+        </div>
+
+        <!-- Converter Body Grid -->
+        <div style="display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 2rem;" class="calc-body-grid">
+          <!-- Inputs Column -->
+          <div>
+            <!-- Validation Alert -->
+            <div class="validation-alert" id="conv-alert" role="alert">
+              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+              </svg>
+              <span id="conv-alert-msg">Please enter a valid CGPA between 0 and 10.</span>
+            </div>
+
+            <!-- CGPA Input -->
+            <div class="form-group">
+              <label for="conv-cgpa-input" class="form-label">
+                CGPA <span class="form-label-hint">(Cumulative Grade Point Average)</span>
+              </label>
+              <div class="input-with-icon">
+                <span class="input-icon-prefix">
+                  <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                  </svg>
+                </span>
+                <input type="number" id="conv-cgpa-input" class="form-input" placeholder="e.g. 8.47" value="8.47" min="0" max="10" step="any" />
+              </div>
+            </div>
+
+            <!-- Multiplier Selector -->
+            <div class="form-group">
+              <label class="form-label">Conversion Formula Multiplier</label>
+              <div class="multiplier-selector">
+                <label class="radio-pill-card selected" id="radio-card-standard">
+                  <input type="radio" name="multiplier-choice" id="multiplier-standard" value="9.5" checked />
+                  <div>
+                    <span class="radio-pill-label">CGPA × 9.5</span>
+                    <span class="radio-pill-sub">Standard (CBSE / AICTE)</span>
+                  </div>
+                </label>
+
+                <label class="radio-pill-card" id="radio-card-custom">
+                  <input type="radio" name="multiplier-choice" id="multiplier-custom" value="custom" />
+                  <div>
+                    <span class="radio-pill-label">Custom Multiplier</span>
+                    <span class="radio-pill-sub">University specific scale</span>
+                  </div>
+                </label>
+              </div>
+            </div>
+
+            <!-- Custom Multiplier Input (Conditional) -->
+            <div class="form-group" id="custom-multiplier-group" style="display: none;">
+              <label for="conv-multiplier-input" class="form-label">
+                Custom Multiplier Value <span class="form-label-hint">(e.g. 10.0, 9.5, 9.0)</span>
+              </label>
+              <input type="number" id="conv-multiplier-input" class="form-input no-prefix" placeholder="e.g. 10.0" value="9.5" min="0.1" step="any" />
+            </div>
+
+            <!-- Official Disclaimer Note from prompt -->
+            <div class="converter-note-box">
+              <svg fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd" />
+              </svg>
+              <p class="converter-note-text">
+                «The CGPA-to-percentage conversion formula can vary by university/institution. The 9.5 multiplier is provided as a commonly used conversion method.»
+              </p>
+            </div>
+
+            <!-- Buttons -->
+            <div class="calc-actions-bar">
+              <div class="btn-group-left">
+                <button type="button" class="btn-primary" id="conv-calc-btn">
+                  <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4" />
+                  </svg>
+                  Convert
+                </button>
+              </div>
+              <div class="btn-group-right">
+                <button type="button" class="btn-secondary" id="conv-reset-btn">
+                  <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+                  </svg>
+                  Reset
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Converter Results Column -->
+          <div style="display: flex; align-items: center; justify-content: center;">
+            <div class="result-card-inner" style="width: 100%;">
+              <span class="result-eyebrow">EQUIVALENT PERCENTAGE</span>
+
+              <!-- Radial Gauge -->
+              <div class="gauge-container">
+                <svg class="gauge-svg" viewBox="0 0 160 160">
+                  <circle class="gauge-bg-circle" cx="80" cy="80" r="70" />
+                  <circle class="gauge-progress-circle" id="conv-gauge-circle" cx="80" cy="80" r="70" stroke-dasharray="439.82" stroke-dashoffset="85.9" />
+                </svg>
+                <div class="gauge-content">
+                  <span class="gauge-value" id="conv-result-percentage">80.47%</span>
+                  <span class="gauge-label">Percentage</span>
+                </div>
+              </div>
+
+              <!-- Breakdown -->
+              <div class="result-stats-list">
+                <div class="result-stat-row">
+                  <span class="result-stat-label">Calculation:</span>
+                  <span class="result-stat-value" id="conv-result-breakdown" style="font-size: 0.84rem;">8.47 × 9.5 = 80.47%</span>
+                </div>
+                <div class="result-stat-row">
+                  <span class="result-stat-label">Division:</span>
+                  <span class="standing-badge">First Class with Distinction</span>
+                </div>
+              </div>
+
+              <!-- Copy Result Button -->
+              <button type="button" class="btn-copy-result" id="conv-copy-btn">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3" />
+                </svg>
+                Copy Conversion Result
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Toast Container -->
+  <div class="toast-container" id="toast-container" aria-live="polite"></div>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="brand-link" style="cursor: default;">
+          <div class="brand-icon-wrapper" style="width: 2.25rem; height: 2.25rem;">
+            <svg fill="currentColor" viewBox="0 0 24 24" style="width: 1.2rem; height: 1.2rem;">
+              <path d="M12 3L1 9L12 15L21 10.09V17H23V9M5 13.18V17.18L12 21L19 17.18V13.18L12 17L5 13.18Z" />
+            </svg>
+          </div>
+          <div class="brand-text">
+            <span class="brand-title" style="font-size: 1.15rem;">Grade<span>Mate</span></span>
+            <span class="brand-subtitle">Simple. Fast. Accurate.</span>
+          </div>
+        </div>
+
+        <nav class="footer-nav" aria-label="Footer Quick Navigation">
+          <a href="#percentage-section">Percentage Calculator</a>
+          <a href="#sgpa-section">SGPA Calculator</a>
+          <a href="#cgpa-section">CGPA Calculator</a>
+          <a href="#converter-section">CGPA to % Converter</a>
+        </nav>
+      </div>
+
+      <div class="footer-bottom">
+        <p>GradeMate • Student Academic Calculator</p>
+        <span class="footer-badge">
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" style="width: 0.95rem; height: 0.95rem; color: var(--success);">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+          </svg>
+          100% Client-Side • Private &amp; Offline Ready
+        </span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/app.js"></script>
+  <script src="js/percentage-calc.js"></script>
+  <script src="js/sgpa-calc.js"></script>
+  <script src="js/cgpa-calc.js"></script>
+  <script src="js/converter.js"></script>
+</body>
+</html>
